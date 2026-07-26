@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { X } from "lucide-react";
+import api from '../api/axios';
 
 
 const Register = ({setShowRegister,setShowSignin}) => {
@@ -10,6 +11,25 @@ const Register = ({setShowRegister,setShowSignin}) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [avatar, setAvatar] = useState(null)
+
+  const submitHandler = async(e) =>{
+    e.preventDefault()
+
+    try {
+      const formData = new FormData()
+
+      formData.append("fullname",fullname)
+      formData.append("username",username)
+      formData.append("email",email)
+      formData.append("password",password)
+      formData.append("avatar",avatar)
+
+      const response = await api.post("/user/register",formData)
+      console.log(response.data)
+    } catch (error) {
+      console.log(error?.response)
+    }
+  }
 
   return (
    
@@ -64,7 +84,7 @@ const Register = ({setShowRegister,setShowSignin}) => {
   />
 </div>
 
-        <button 
+        <button onClick={submitHandler}
          className='bg-green-500 rounded-2xl text-white font-bold w-full h-2/10 transition-all duration-300 hover:scale-105 hover:bg-green-800 '>Register</button>
         <div className='flex justify-center gap-3'>
              <p>Already a user?</p>

@@ -1,14 +1,18 @@
 import React from 'react'
 import api from './api/axios.js'
 import HomePage from './components/HomePage.jsx'
+import { Routes , Route} from 'react-router-dom'
+
+import UserDashboard from './components/UserDashboard.jsx'
 
 const App = () => {
 
   
   return (
-    <div>
-      <HomePage/>
-    </div>
+   <Routes>
+    <Route path='/' element={<HomePage/>} />
+    <Route path='/userdashboard' element={<UserDashboard/>}/>
+   </Routes>
   )
 }
 
