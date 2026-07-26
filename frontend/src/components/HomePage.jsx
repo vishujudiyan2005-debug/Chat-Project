@@ -8,7 +8,7 @@ function HomePage() {
 
   const [showRegister, setShowRegister] = useState(false)
   const [showSignin, setShowSignin] = useState(false)
-  console.log (showRegister)
+ 
   return (
     <>
     <div className={(showRegister || showSignin)? 'blur-sm bg-green-200 min-h-screen flex flex-col':'bg-green-200 min-h-screen flex flex-col'}>
